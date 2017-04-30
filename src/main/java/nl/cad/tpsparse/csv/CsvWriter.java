@@ -130,7 +130,10 @@ public abstract class CsvWriter {
         } else if (value instanceof LocalTime) {
             return ((LocalTime) value).toString("HH:mm");
         } else {
-            return String.valueOf(value);
+            String reVal = String.valueOf(value);
+            reVal = reVal.replaceAll("\r\n", "");
+            reVal = reVal.trim();
+            return reVal; //String.valueOf(value);
         }
     }
 
